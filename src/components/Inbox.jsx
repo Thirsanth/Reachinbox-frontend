@@ -2,10 +2,12 @@ import {React,useEffect,useState} from 'react'
 import { CiSearch } from "react-icons/ci";
 import axios from 'axios';
 
-
+import { Link } from 'react-router-dom';
+import Maildisp from './Maildisp';
 
 export default function Inbox() {
     const [mail,setMail] = useState([]);
+    const [selectedmail,setSelectedmail]= useState(null);
     // fetch("https://hiring.reachinbox.xyz/api/v1/onebox/list",{
     //     method:"GET",
     //     headers:{
@@ -29,6 +31,9 @@ export default function Inbox() {
     }
     datafetch();
     },[])
+  
+    
+
   return (
     <div>
         
@@ -36,9 +41,7 @@ export default function Inbox() {
       <div>
             <p className='text-allinboxcolor font-medium'>All Inbox's</p>
         </div>
-        {/* <div className='flex '>
-        <CiSearch className='w-[2rem] h-[1.3rem] bg-gray-300' /><input type='text' className='bg-gray-300 border-r-5 h-5 ' />
-        </div> */}
+       
         
 <form class="max-w-md my-2">   
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -48,7 +51,7 @@ export default function Inbox() {
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
             </svg>
         </div>
-        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+        <input type="search" id="default-search"  class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
         <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
     </div>
 </form>
@@ -57,15 +60,18 @@ export default function Inbox() {
         {mail.map((d)=>{
           return(
         //   <div>
-        <div class="box-border h-[6rem] w-[100rem] p-4 border-[1px] mt-3 ">
-            <h2 className='flex  justify-between'>{d.fromEmail}  {d.sentAt}</h2> 
-            <p>{d.subject}</p>
-
+        <div key={d.id} onClick={()=>{setSelectedmail(d)}}  class="box-border h-[6rem] w-[30rem] p-4 border-b-[1px] mt-3 ">
+         
+          
+            <h2 className='font-bold'>{d.fromEmail}</h2> 
+            <p className='font-light'>{d.subject}</p>
+        
           </div>
           )
           
         })}
         {/* </div> */}
+        {selectedmail && <Maildisp data={selectedmail} />}
 
         
       </div>

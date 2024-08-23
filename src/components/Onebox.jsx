@@ -7,28 +7,9 @@ import { IoIosSend } from "react-icons/io";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
 import Inbox from './Inbox';
+import Maildisp from './Maildisp';
+import {Link} from 'react-router-dom';
 export default function Onebox() {
-  // const [mail,Setmail] = useState([]);
-
-  // const res = ()=>{const result = axios.get("https://hiring.reachinbox.xyz/api/v1/onebox/list",{
-  //   headers:{
-  //     "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidGhpcnNhbnRoZ0BnbWFpbC5jb20iLCJpZCI6MTA4NSwiZmlyc3ROYW1lIjoiVGhpcnNhbnRoIiwibGFzdE5hbWUiOiJHaXJpZGhhciJ9LCJpYXQiOjE3MjQxNDc4NDYsImV4cCI6MTc1NTY4Mzg0Nn0.KD88mdc_h-zBV7lqmYzO5-KtLZoTdHVJVcqElXYkHoA",
-  //     "Content-Type":"application/json"
-  //   }
-  // })
-  // }
-  // fetch("https://hiring.reachinbox.xyz/api/v1/onebox/list",{
-  //   method:"GET",
-  //   headers:{
-  //     "Authorization":"bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidGhpcnNhbnRoZ0BnbWFpbC5jb20iLCJpZCI6MTA4NSwiZmlyc3ROYW1lIjoiVGhpcnNhbnRoIiwibGFzdE5hbWUiOiJHaXJpZGhhciJ9LCJpYXQiOjE3MjQxNDc4NDYsImV4cCI6MTc1NTY4Mzg0Nn0.KD88mdc_h-zBV7lqmYzO5-KtLZoTdHVJVcqElXYkHoA",
-  //     "Content-type":"application/json"
-  //   }
-  // })
-  // .then(async function(res){
-  //   const json = await res.json();
-  //   // console.log(json);
-  //   Setmail(json.data);
-  // })
   
   return (
     <div className=' fixed text-white font-semibold'>
@@ -44,7 +25,8 @@ export default function Onebox() {
     <li><a href="#" className="block text-center"><CiMail /></a></li>
     <li><a href="#" className="block text-center"><IoIosSend /></a></li>
     <li><a href="#" className="block text-center"><FiMenu /></a></li>
-    <li><a href="#" className="block text-center"><FaInbox /></a></li>
+    {/* <li><a href="" className="block text-center"><FaInbox /></a></li> */}
+    <li><Link to='/onebox' className="block text-center" ><FaInbox /></Link></li>
     <li><a href="#" className="block text-center"><BiSolidBarChartAlt2 /></a></li>
 
   </ul>
@@ -63,8 +45,7 @@ export default function Onebox() {
         })}
       </div> */}
       <Inbox />
-
-
+      {/* <Maildisp /> */}
     </div>
   )
 }
